@@ -7,6 +7,10 @@ package com.vn.introjava;
 
 import static com.vn.introjava.funcionesbasicas.DatosBasicos.*;
 import static com.vn.introjava.funcionesbasicas.Ordenamiento.*;
+import com.vn.introjava.poo.Coche;
+import com.vn.introjava.poo.FabricaCoches;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Clase principal del proyecto Ejemplos Java
@@ -21,24 +25,21 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-//        EstructurasControl.ejecutarBucles(); 
-//        EstructurasControl.ejecutarCondiciones();
-//          
-//        mostrarTiposDatos();
-//        DatosBasicos.probarOperadores();
-        
-        //ordenarArray3();
-        
-        
-        ordenarArray3(generarArray(10000));
+
+        try {
+            //        EstructurasControl.ejecutarBucles();
+            //        EstructurasControl.ejecutarCondiciones();
+            //          
+            //        mostrarTiposDatos();
+            //        DatosBasicos.probarOperadores();
+
+            //ordenarArray3();
+            //ordenarArray3(generarArray(10000));
+            Coche coche = FabricaCoches.crear(null);
+            coche.mostrarEstado();
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-     
-    
-    
-    
-    
-    
-    
 
 }
