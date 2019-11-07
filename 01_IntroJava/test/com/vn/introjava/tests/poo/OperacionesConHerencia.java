@@ -75,8 +75,11 @@ public class OperacionesConHerencia {
     public void testClasesAbstractas() {
         //Vehiculo desconocido = new Vehiculo();
         Vehiculo coche = new Coche("Dacia");
+        Vehiculo coche2 = new Coche("Mercedes");
         Vehiculo rally = new CocheRally("Subaru");
         Vehiculo tractor = new Tractor();
+        Vehiculo tractor2 = new Tractor();
+              
         //coche.avanzar();
         //tractor.avanzar();
         
@@ -87,19 +90,19 @@ public class OperacionesConHerencia {
             coche,
             tractor,
             rally,
+            tractor2,
+            coche2
         };
         
         for (Vehiculo miVehiculo : misVehiculos) {
-            System.out.println(" - "+miVehiculo.getTipo());
+            System.out.println(miVehiculo.getTipo());
             miVehiculo.avanzar();
             miVehiculo.mostrarEstado();
             System.out.println("\n");
         }
+        System.out.println("----------------------------------------");
         
-        //System.out.println("\n");
-        
-        
-        
+        //System.out.println("\n");    
     }
     
 }

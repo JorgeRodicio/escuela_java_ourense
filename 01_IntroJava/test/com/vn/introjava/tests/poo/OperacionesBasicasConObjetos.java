@@ -6,6 +6,7 @@
 package com.vn.introjava.tests.poo;
 
 import com.vn.introjava.poo.Coche;
+import com.vn.introjava.poo.CocheRally;
 import com.vn.introjava.poo.FabricaCoches;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -62,8 +63,7 @@ public class OperacionesBasicasConObjetos {
         Object refAmiCoche = miCoche;
         //No podemos porque no tiene la forma de coche
         //System.out.println("miCoche2 marca: " + refAmiCoche.getMarca());
-        assertTrue(refAmiCoche.equals(miCoche));
-        assertEquals(miCoche.getNumRuedas(), 4);
+        assertTrue(refAmiCoche.equals(miCoche));        
          
         //Coche coche3 = (Coche) new Object();
         
@@ -78,7 +78,7 @@ public class OperacionesBasicasConObjetos {
     public void testSobrecarga(){
         Coche miCoche = new Coche();
         
-        for(int i = -2; i < 6; i++){  
+        for(int i = 1; i <= 4; i++){  
             if(i != 4){
                 assertFalse(miCoche.arrancar(i));
             }else{
@@ -97,5 +97,28 @@ public class OperacionesBasicasConObjetos {
     public void gestionExcepciones() throws Exception{
         Coche miCoche = FabricaCoches.crear("");      
     }
+    
+    
+    @Test 
+    public void gestionExcepciones_2() {
+        try {      
+            Coche miCoche = FabricaCoches.crear("");
+        } catch (Exception ex) {
+            Logger.getLogger(OperacionesBasicasConObjetos.class.getName()).log(Level.SEVERE, null, ex);
+            assertTrue(ex instanceof IllegalArgumentException);
+        }
+    }
+    
+    
+    @Test 
+    public void testConstructoresSobrecargados() {
+        Coche coche = new Coche("Ferrari");
+        assertEquals(coche.getMarca(), "Ferrari");
+    }
+    
+    
+       
+    
+    
     
 }

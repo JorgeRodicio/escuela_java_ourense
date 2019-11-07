@@ -9,20 +9,25 @@ package com.vn.introjava.poo;
  *
  * @author pc
  */
-public class Coche {
+public class Coche extends Vehiculo{
     private String marca;
     private int numRuedas;
-    private boolean arrancado;
+    protected boolean arrancado;
     
     public Coche(){
         this.marca = "SIN MARCA";
         numRuedas = 4;
+        this.arrancado = false;
+        this.tipo = TipoVehiculo.TURISMO;
+        
+    }
+
+    public Coche(String marca) {
+        this.marca = marca;
+        this.arrancado = false;
+        this.tipo = TipoVehiculo.TURISMO;
     }
       
-    public Coche(String marca){
-        this.marca = marca;
-        numRuedas = 4;
-    }
     
     public String getMarca(){
         return this.marca;
@@ -46,14 +51,21 @@ public class Coche {
     }
     
     public void arrancar(){
-        System.out.println(this.marca + " ha arrancado");
+        System.out.println(this.marca + " arrancado");
         arrancado = true;
     }
-    
+    /**Si la poscición de la llave es 4, el coche arranca
+     * No arranca en cualquier otro caso
+     * 
+     * @param posicionLlave     puede ser un número del 1 al 4
+     * @return                  si se ha arrancado devuelve true
+     */
     public boolean arrancar(int posicionLlave){ //4 posiciones de llave. La 4 arranca
-       
+        if(posicionLlave < 1 || posicionLlave > 4){
+            throw new IllegalArgumentException("La llave ha de valer entre 1 y 4");
+        }
         arrancado = posicionLlave == 4 /*? true : false*/;
-        System.out.println(this.marca +(arrancado ? " ha arrancado"
+        System.out.println(this.marca +(arrancado ? "  arrancado"
                                                    : " fallo arrancar"));
         return arrancado;
     }
@@ -63,8 +75,28 @@ public class Coche {
         return arrancado;
     }
     
-    public void mostrarEstado(){  
-        System.out.println("Coche " + getMarca() +(arrancado ? " ha arrancado"
-                                                   : " fallo arrancar"));
+    /**
+     * Simplemente muestra la marca y si está arrancado
+     * @return 
+     */
+    @Override
+    public String toString(){  
+        StringBuilder toRet = new StringBuilder();
+        String mensaje ="";
+        if(isArrancado())
+            mensaje = "Arrancado";
+        else
+            mensaje = "No arrancado";
+        toRet.append(getMarca() +(arrancado ? mensaje
+                                                   : "\n"+mensaje+"\nTipo: "+this.getTipo()));
+        
+        return toRet.toString();
+    }
+    
+
+
+    @Override
+    public void avanzar() {
+        System.out.println("Ruedo un poco");
     }
 }
