@@ -9,6 +9,15 @@ package pkg02_ejer_herencia_animales;
  *
  * @author pc
  */
-public class Percebe {
-    
+public class Percebe extends Animal {
+
+    public Percebe(String nombre, int edad) {
+        super(nombre, edad);
+    }
+
+    @Override
+    public void desplazar() {
+        
+    }
+   
 }
