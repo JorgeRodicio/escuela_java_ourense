@@ -9,7 +9,7 @@ package pkg02_ejer_herencia_animales;
  *
  * @author pc
  */
-<<<<<<< HEAD
+
 public class Percebe extends Animal{
 
     public Percebe() {
@@ -30,6 +30,14 @@ public class Percebe extends Animal{
     @Override
     public void desplazar() {
         System.out.println("No se mueve, se adhiere a una roca");
+    }
+    
+    @Override
+    public String toString(){
+        return ("PERCEBE\nNombre: "+this.getNombre()+
+                "\nEdad: "+this.getEdad()+
+                "\nPeso: "+this.getPeso()+
+                "\nHabitat: "+this.getHab());
     }
     
 }

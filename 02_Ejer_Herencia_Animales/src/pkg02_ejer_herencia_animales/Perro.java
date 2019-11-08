@@ -13,7 +13,7 @@ public class Perro extends Animal {
     
     private String raza;
     
-    public Perro(String nombre, int edad, float peso, String raza) {
+    public Perro(String nombre, int edad, String raza) {
         super(nombre, edad);
         this.raza = raza;
         this.hab = hab.TERRESTRE;
@@ -41,7 +41,8 @@ public class Perro extends Animal {
         return ("PERRO\nNombre: "+this.getNombre()+
                 "\nEdad: "+this.getEdad()+
                 "\nPeso: "+this.getPeso()+
-                "\nRaza: "+this.getRaza());
+                "\nRaza: "+this.getRaza()+
+                "\nHabitat: "+this.getHab());
     }
     
 }
