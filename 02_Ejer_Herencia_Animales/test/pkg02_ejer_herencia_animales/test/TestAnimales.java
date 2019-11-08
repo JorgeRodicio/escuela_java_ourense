@@ -27,6 +27,9 @@ public class testAnimales {
         
     }
     
+    /**
+     * Se crea un array con animales (Perro y Percebe)
+     */
     @BeforeClass
     public static void setUpClass() {
         animales = new Animal[3];
@@ -39,13 +42,13 @@ public class testAnimales {
     @Before
     public void setUp() {
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
-    
+     
+    /**
+     * Test de animales y sus métodos
+     * Imprime los animales y su información
+     * Los animales se alimentan y se desplazan
+     * Se cambian los valores de los animales mediante los set y se imprime por pantalla
+     */
     @Test
     public void testAnimales(){
         for (int i = 0; i < animales.length; i++) {
