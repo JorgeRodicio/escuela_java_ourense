@@ -10,6 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import pkg02_ejer_herencia_animales.Animal;
+import static pkg02_ejer_herencia_animales.Animal.mostrar;
 import pkg02_ejer_herencia_animales.Habitat;
 import pkg02_ejer_herencia_animales.Percebe;
 import pkg02_ejer_herencia_animales.Perro;
@@ -48,7 +49,7 @@ public class testAnimales {
     @Test
     public void testAnimales(){
         for (int i = 0; i < animales.length; i++) {
-            System.out.println(animales[i]);
+            mostrar(animales[i]);
             animales[i].alimentar("comida rica");
             animales[i].desplazar();
             System.out.println("");
