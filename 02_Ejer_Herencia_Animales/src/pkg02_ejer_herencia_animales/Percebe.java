@@ -32,4 +32,12 @@ public class Percebe extends Animal{
         System.out.println("No se mueve, se adhiere a una roca");
     }
     
+    @Override
+    public String toString(){
+        return ("PERCEBE\nNombre: "+this.getNombre()+
+                "\nEdad: "+this.getEdad()+
+                "\nPeso: "+this.getPeso()+
+                "\nHabitat: "+this.getHab());
+    }
+    
 }

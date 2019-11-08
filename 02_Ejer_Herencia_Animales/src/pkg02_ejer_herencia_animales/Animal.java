@@ -24,22 +24,19 @@ private float peso;
     
     public Animal(String nombre, int edad) {
         this.nombre = nombre;
-        this.edad = edad;
         this.peso = 15f;
         this.hab = hab.NO_DEFINIDO;
+        
+        if (edad <0)
+            this.edad = 0;
+        else 
+            this.edad = edad;       
     }
 
     
     
     public Habitat getHab() {
         return hab;
-    }
-
-    public void setHab(Habitat hab) {
-        if (hab!=hab.ACUATICO) {
-              this.hab = hab;
-        }
-      
     }
 
     public String getNombre() {
@@ -82,9 +79,10 @@ private float peso;
  
     
     public String toString(){
-        return ("Nombre: "+this.getNombre()+
+        return ("\nNombre: "+this.getNombre()+
                 "\nEdad: "+this.getEdad()+
-                "\nPeso: "+this.getPeso());
+                "\nPeso: "+this.getPeso()+
+                "\nHabitat: "+this.getHab());
     }
     
     public abstract void desplazar();
