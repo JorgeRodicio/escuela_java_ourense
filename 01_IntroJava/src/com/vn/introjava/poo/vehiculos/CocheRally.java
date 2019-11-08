@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.vn.introjava.poo;
+package com.vn.introjava.poo.vehiculos;
 
 /** Clase CocheRally para controlar otras características
  * específicas de los rallies
@@ -23,13 +23,13 @@ public class CocheRally extends Coche{
     public CocheRally(String marca) {
         super(marca);
         rozamiento = 5f;
-         this.tipo = TipoVehiculo.RALLY;
+        this.tipo = TipoVehiculo.RALLY;
     }
 
     public CocheRally(float rozamiento, String marca) {
         super(marca);
         this.rozamiento = rozamiento;
-         this.tipo = TipoVehiculo.RALLY;
+        this.tipo = TipoVehiculo.RALLY;
     }     
     
     /**

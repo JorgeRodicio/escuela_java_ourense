@@ -3,14 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.vn.introjava.poo;
+package com.vn.introjava.poo.interfaces;
 
 /**
  *
  * @author pc
  */
-public enum TipoVehiculo {
-    TURISMO,
-    RALLY,
-    TRACTOR   
+public interface Desplazable {
+    
+    void mover(float metros);
+    
+    //public void mover(int metros);
+    
+    //public void detener();
 }

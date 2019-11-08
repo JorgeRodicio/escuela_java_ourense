@@ -3,16 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.vn.introjava.poo;
+package com.vn.introjava.poo.vehiculos;
+
+import com.vn.introjava.poo.interfaces.Desplazable;
 
 /**Clase abstracta no puede ser instanciada
  *
  * @author pc
  */
-public abstract class Vehiculo {
+public abstract class Vehiculo implements Desplazable{
     
     protected TipoVehiculo tipo;
 
+    /*
+    public Vehiculo() {
+    }*/
+
+    
+    
     public TipoVehiculo getTipo() {
         return tipo;
     }
@@ -29,6 +37,8 @@ public abstract class Vehiculo {
     public void mostrarEstado() {
         System.out.println(this.toString());
     }
+
+    
     
     
 }
