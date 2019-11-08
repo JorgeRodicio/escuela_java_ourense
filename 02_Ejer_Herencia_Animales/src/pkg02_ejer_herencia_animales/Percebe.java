@@ -12,8 +12,6 @@ package pkg02_ejer_herencia_animales;
 
 public class Percebe extends Animal{
 
-    
-
     public Percebe(String nombre, int edad) {
         super(nombre, edad);
         this.hab = hab.ACUATICO;
@@ -26,6 +24,10 @@ public class Percebe extends Animal{
     
     }
     
+    /**
+     * Método para desplazar al percebe
+     * El percebe no se mueve pero se adhiere una roca
+     */
     @Override
     public void desplazar() {
         System.out.println("No se mueve, se adhiere a una roca");

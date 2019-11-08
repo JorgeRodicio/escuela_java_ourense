@@ -31,6 +31,9 @@ public class Perro extends Animal {
         System.out.println(this.getNombre()+" dice 'Guau, guau, guau");
     }
 
+    /**
+     * Método que desplaza al perro
+     */
     @Override
     public void desplazar() {
         System.out.println(this.getNombre()+" corre contento");
