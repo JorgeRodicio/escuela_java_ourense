@@ -13,15 +13,10 @@ public abstract class Animal {
     
     protected Habitat hab;
     
-private String nombre;
-private int edad;
-private float peso;
+    private String nombre;
+    private int edad;
+    private float peso;
 
-    public Animal() {
-    }
-
-   
-    
     public Animal(String nombre, int edad) {
         this.nombre = nombre;
         this.peso = 15f;
@@ -63,20 +58,15 @@ private float peso;
         this.peso = peso;
     }
 
-    
-   
-
     public void alimentar(String alimento){
-        System.out.println(this.nombre + "mastica y come " + alimento);
+        System.out.println(this.nombre + " mastica y come " + alimento);
     
     }
     
-   public static void mostrar(Animal animal){
-       System.out.println(animal.toString());
-   }
-
-
- 
+    public static void mostrar(Animal animal){
+        System.out.println(animal.toString());
+    }
+    
     
     public String toString(){
         return ("\nNombre: "+this.getNombre()+
