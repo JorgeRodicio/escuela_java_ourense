@@ -6,7 +6,8 @@
 package pkg02_ejer_herencia_animales;
 
 /**
- *
+ * Enumerado que representa el habitat del animal
+ * Valores: NO_DEFINIDO, ACUATICO, TERRESTRE, ANFIBIO
  * @author pc
  */
 public enum Habitat  {
