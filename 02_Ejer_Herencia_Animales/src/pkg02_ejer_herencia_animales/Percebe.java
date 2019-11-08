@@ -9,7 +9,7 @@ package pkg02_ejer_herencia_animales;
  *
  * @author pc
  */
-<<<<<<< HEAD
+
 public class Percebe extends Animal{
 
     public Percebe() {
