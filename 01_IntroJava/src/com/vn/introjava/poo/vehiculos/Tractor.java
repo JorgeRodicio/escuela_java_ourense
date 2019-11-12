@@ -10,10 +10,22 @@ package com.vn.introjava.poo.vehiculos;
  * @author pc
  */
 public class Tractor extends Vehiculo{
+    
+    private int numero;
 
     public Tractor() {
          this.tipo = TipoVehiculo.TRACTOR;
     }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+    
+    
     
     @Override
     public void avanzar() {
@@ -23,7 +35,7 @@ public class Tractor extends Vehiculo{
     @Override
     public String toString() {
         StringBuilder toRet = new StringBuilder();
-        toRet.append("Tipo: "+this.getTipo());
+        toRet.append(this.getTipo() + " "+getNumero());
         
         
         return toRet.toString();

@@ -87,8 +87,8 @@ public class Coche extends Vehiculo{
             mensaje = "Arrancado";
         else
             mensaje = "No arrancado";
-        toRet.append(getMarca() +(arrancado ? mensaje
-                                                   : "\n"+mensaje+"\nTipo: "+this.getTipo()));
+        toRet.append(this.getTipo()+" - "+getMarca() +(arrancado ? mensaje
+                                                   : " "+mensaje));
         
         return toRet.toString();
     }
