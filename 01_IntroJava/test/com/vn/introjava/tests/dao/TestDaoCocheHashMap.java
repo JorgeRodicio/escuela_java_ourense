@@ -7,7 +7,11 @@ package com.vn.introjava.tests.dao;
 
 import com.vn.introjava.dao.DaoCocheList;
 import com.vn.introjava.dao.DaoCocheMap;
+import com.vn.introjava.dao.DaoUsuarioList;
 import com.vn.introjava.dao.IDaoCoche;
+import com.vn.introjava.dao.IDaoUsuario;
+import com.vn.introjava.dao.Usuario;
+import com.vn.introjava.poo.vehiculos.Coche;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -17,10 +21,10 @@ import static org.junit.Assert.*;
  */
 public class TestDaoCocheHashMap {
     
-    @Test
+    /*@Test
     public void probarDaoCocheList() throws Exception {
         testInterfaceDaoCoche(new DaoCocheList());    
-    }
+    }*/
     
     @Test
     public void probarDaoCocheMap() throws Exception {
@@ -28,12 +32,23 @@ public class TestDaoCocheHashMap {
     }
     
     void testInterfaceDaoCoche(IDaoCoche dao) throws Exception{
-        dao.crear("Coche A");
-        dao.crear("Coche B");
-        dao.crear("Coche C");
-                
-        assertEquals(dao.obtenerPorIndice(1).getMarca(), "Coche B");
-        assertEquals(dao.obtenerPorMarca("Coche A").getMarca(), "Coche A");
+           
+        dao.crear(new Coche("Coche 1"));
+        dao.crear(new Coche("Coche 2"));
+        Coche cc = dao.crear(new Coche("Coche 3"));
+              
+       
+        assertEquals(dao.obtenerPorIndice(1).getMarca(), "Coche 2");
+        assertEquals(dao.obtenerPorMarca("Coche 1").getMarca(), "Coche 1");
+        
+        //Eliminar
+        dao.eliminar(0);
+        assertEquals(dao.obtenerPorIndice(0), null);
+        
+        //Modificar
+        Coche modificar = new Coche("Coche 2 ahora X");
+        dao.modificar(1, modificar);
+        assertEquals(dao.obtenerPorIndice(1).getMarca(), "Coche 2 ahora X");
     }
 
     // TODO add test methods here.

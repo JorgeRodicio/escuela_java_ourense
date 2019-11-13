@@ -105,5 +105,19 @@ public class Coche extends Vehiculo{
         avanzar();
         System.out.println(metros + " metros");
     }
+
+    @Override
+    public boolean equals(Object coche) {
+        if (coche instanceof Coche) {
+            Coche c = (Coche) coche;
+            if(this.getMarca().equals(c.getMarca())){
+                return true;
+            }
+        }
+        
+        return false; //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
     
 }

@@ -22,15 +22,15 @@ public class DaoUsuarioList implements IDaoUsuario{
     }
       
     @Override
-    public void crear(Usuario usuario) {
+    public Usuario crear(Usuario usuario) throws Exception{
         listUsuarios.add(usuario);
+        return usuario;
     }
     
-    public void crear(String nombre, int edad) {
-        listUsuarios.add(new Usuario(nombre, edad));
+    public Usuario crear(String nombre, int edad) throws Exception{
+        return crear(new Usuario(nombre, edad));
     }
     
-
     @Override
     public Usuario obtenerPorIndice(int index) {
          return listUsuarios.get(index);
@@ -47,8 +47,22 @@ public class DaoUsuarioList implements IDaoUsuario{
     }
 
     @Override
-    public void modificar(int index, Usuario objeto) throws Exception {
-        listUsuarios.set(index, objeto);
+    public Usuario modificar(int index, Usuario usuario) throws Exception {
+        Usuario u = this.listUsuarios.get(index);
+        u.setEdad(usuario.getEdad());
+        u.setNombre(usuario.getNombre());
+        
+        return u;
+    }
+
+    @Override
+    public void eliminar(int index) {
+        listUsuarios.remove(index);
+    }
+
+    @Override
+    public void eliminar(Usuario usuario) {
+        listUsuarios.remove(usuario);
     }
     
     

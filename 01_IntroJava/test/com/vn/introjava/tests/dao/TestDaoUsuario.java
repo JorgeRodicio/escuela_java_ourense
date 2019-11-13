@@ -22,18 +22,26 @@ public class TestDaoUsuario {
     
     
     @Test
-    public void testDaoUsuario() throws Exception{
+    public void testDaoUsuarioList() throws Exception{
         
         IDaoUsuario dao = new DaoUsuarioList();
         
         dao.crear(new Usuario("Nombre 1", 20));
         dao.crear(new Usuario("Nombre 2", 10));
         dao.crear(new Usuario("Nombre 3", 20));
-                
+              
         //assertEquals(dao.obtener(1).getNombre(), "Nombre 2");
         assertEquals(dao.obtenerPorIndice(1).getEdad(), 10);
         assertEquals(dao.obtenerPorNombre("Nombre 1").getNombre(), "Nombre 1");
-
+        
+        //Eliminar
+        dao.eliminar(0);
+        assertEquals(dao.obtenerPorIndice(0).getEdad(), 10);
+        
+        //Modificar
+        dao.modificar(0, new Usuario("Nombre 4", 50));
+        assertEquals(dao.obtenerPorIndice(0).getEdad(), 50);
+        
     }
     
     

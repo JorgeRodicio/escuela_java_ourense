@@ -11,9 +11,14 @@ package com.vn.introjava.dao;
  */
 public interface IGenericDao<T>  {
     
-    public void crear(T objeto) throws Exception;
+    public T crear(T objeto) throws Exception;
     
     public T obtenerPorIndice(int index);
     
-    void modificar(int index, T objeto) throws Exception;
+    T modificar(int index, T objeto) throws Exception;
+    
+    void eliminar(int index);
+    
+    void eliminar(T objeto);
+ 
 }

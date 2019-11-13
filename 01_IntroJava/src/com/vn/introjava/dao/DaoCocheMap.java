@@ -29,16 +29,16 @@ public class DaoCocheMap implements IDaoCoche{
     }
     
     @Override
-    public void crear(String marca) throws Exception{       
-        Coche coche = FabricaCoches.crear(marca);
-        crear(coche);    
+    public Coche crear(String marca) throws Exception{       
+        return crear(FabricaCoches.crear(marca));
     }
     
     @Override
-    public void crear(Coche coche) {
+    public Coche crear(Coche coche) {
         mapCoches.put(index, coche);
         mapCochesString.put(coche.getMarca(), coche);
         index++;
+        return coche;
     }
 
     @Override
@@ -52,9 +52,43 @@ public class DaoCocheMap implements IDaoCoche{
     }
 
     @Override
-    public void modificar(int index, Coche coche) throws Exception {
-        mapCoches.replace(index, coche);
-        mapCochesString.replace(obtenerPorIndice(index).getMarca(), coche);
+    public Coche modificar(int index, Coche coche) throws Exception {
+       Coche c = obtenerPorIndice(index);
+        mapCochesString.remove(c.getMarca());
+        mapCochesString.put(coche.getMarca(), c);
+            
+        //Coche cStr = this.mapCochesString.get(c.getMarca());
+        c.setMarca(coche.getMarca());
+        c.setTipo(coche.getTipo());
+        c.arrancar(coche.isArrancado() ? 4 : 1);
+       
+        //cStr = c;
+        
+        return c;
+    }
+
+    @Override
+    public void eliminar(int index) {
+        Coche c = this.mapCoches.get(index);
+        mapCoches.remove(index);
+        mapCochesString.remove(c.getMarca());
+    }
+
+    @Override
+    public void eliminar(Coche coche) {
+        String marca = coche.getMarca();
+        mapCochesString.remove(marca);
+        
+        int keyIndex = -1;
+        if (mapCoches.containsValue(coche)) {
+            for (Map.Entry<Integer,Coche> parIndexYCoche : mapCoches.entrySet()) {
+                if (parIndexYCoche.getValue().getMarca().equals(coche.getMarca())) {
+                    keyIndex = parIndexYCoche.getKey();
+                }
+            }
+        }
+        mapCoches.remove(keyIndex);
+        
     }
 
     
