@@ -5,6 +5,8 @@
  */
 package com.vn.concurrencia;
 
+import java.util.List;
+
 /**
  *
  * @author pc
@@ -13,6 +15,8 @@ public class HilosSencillos {
     static int contadorCompartido = 0;
     HiloA hiloA1, hiloA2;
     HiloB hiloB1, hiloB2;
+    
+    
 
     public HilosSencillos() {
         this.hiloA1 = new HiloA();
