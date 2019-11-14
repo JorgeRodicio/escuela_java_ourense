@@ -24,12 +24,14 @@ public class HilosSencillosSet {
 
     public HilosSencillosSet() {
         this.setHilos = new HashSet<>();
-        iterador = setHilos.iterator();
+        
         
         for (int i = 0; i < 10; i++) {
            setHilos.add(new HiloA());
            setHilos.add(new HiloB());
         }
+        
+        iterador = setHilos.iterator();
     }
     
     
@@ -60,26 +62,28 @@ public class HilosSencillosSet {
     }
       
     public void ejecutarHilosEnParalelo(){
-        System.out.println("\n---- ARRAY HILOS START PARALELO----");
+        iterador = setHilos.iterator();
+        System.out.println("\n---- SET HILOS START PARALELO----");
         
-        while(iterador.hasNext()){
+        while(iterador.hasNext()){   
              Thread thread = new Thread(iterador.next());
              thread.start();
-            
              while(thread.isAlive());
                   
         }
-        System.out.println("\n---- FIN ARRAY HILOS START PARALELO----");
+        System.out.println("\n---- FIN SET HILOS START PARALELO----");
     }
     
     public void ejecutarHilosEnSerie(){
-        System.out.println("\n---- ARRAY HILOS START SERIE----");
+        iterador = setHilos.iterator();
+        System.out.println("\n---- SET HILOS START SERIE----");
         
         while(iterador.hasNext()){
+            
             Runnable thread = iterador.next();  
             thread.run();
         }
-        System.out.println("\n---- FIN ARRAY HILOS START SERIE----");
+        System.out.println("\n---- FIN SET HILOS START SERIE----");
     }
     
     
