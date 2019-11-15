@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+    
+
+    
+</head>
+<body>
+    <div class="container"></div>
+    <header>
+            <img src="images/gato.png" style="width: 15%; height: 15%;"
+            alt="Texto alternativo"/>
+            <h1 class="titulo">Título de la web</h1>
+            <nav>
+                <ul> <!--Unordered list-->
+                    <li class="elemento-menu"><a id="enlace-menu" href="01_estructura_html5.html">Menu principal</a></li>
+                    <li class="elemento-menu"><a id="enlace-css" href="02_ejemplo_css3.html"> Ejemplos CSS</a></li>
+                    <li class="elemento-menu"><a href="03_formularios.html">Formularios</a></li>
+                    <li class="elemento-menu"><a href="04_bootstrap.html">Bootstrap</a></li>
+                    <li class="elemento-menu"><a href="05_ejemplos_js.html">Webs dinámicas con JS</a></li>
+                </ul>
+            </nav>
+    </header>
+    <section class="macro-colocado">
+            <!--Los encabezados no se deben utillizar para el estilo, si no por el contenido-->
+            <h2>Encabezado nivel 2, como título secundario</h2>
+            <h3>Encabezado nivel 3, para otros títulos</h3>
+            <article class="articulo macro-colocado">
+                <h4 class="azul-chillon">Aquí iría un artículo</h4>
+                Con el texto que sea bla bla bla Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias omnis debitis quia vitae adipisci, veniam quam! Odit doloremque eum repudiandae, dolore minus, a rerum, corporis laboriosam perspiciatis sed velit modi?
+            </article>
+            <article class="articulo macro-colocado">
+                    <h4>Aquí otro artículo.</h4>
+                    Con el texto que sea bla bla bla Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo maiores voluptate ipsum pariatur. Laudantium temporibus rerum esse a dolores harum ratione culpa dolorum numquam, nemo magnam beatae ad? Aliquid, neque.
+                    <section class="macro-colocado">Otra parte del artículo Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis nihil, atque impedit pariatur expedita, vitae sunt aperiam maiores numquam eius corrupti modi natus rem unde debitis, rerum assumenda aut quas.</section>
+                    <section class="macro-colocado">Otra parte del artículo Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis nihil, atque impedit pariatur expedita, vitae sunt aperiam maiores numquam eius corrupti modi natus rem unde debitis, rerum assumenda aut quas.</section>
+                    <video src="images/video.mp4" controls="true"></video>
+
+            </article>
+            
+            <table>
+                <tr> <!--TR cada una de las filas-->
+                    <th>Nombre</th> <!--TH para las cabeceras de las columnas-->
+                    <th>Apellidos</th>
+                    <th>Edad</th>
+                    <th>Contacto</th>
+                </tr>
+                <tr>
+                    <td>Ana</td> <!--TD para cada una de las celdas de las columnas-->
+                    <td>Pérez</td>
+                    <td>40</td>
+                    <td><a href="mailto://ana.perzer@vn.com">Enviar email</a></td>
+                </tr>
+                <tr>
+                    <td>Juan</td> <!--TD para cada una de las celdas de las columnas-->
+                    <td>Gómez</td>
+                    <td>30</td>
+                    <td><a href="tel://9919991991">Llamar por teléfono</a></td>
+                </tr>
+            </table>
+    </section>
+    <aside>
+        <p>Típico submenú con enlaces de interés</p>
+        <ul>
+            <li><a href="https://www.w3schools.com/">www.w3schools.com</a></li>
+            <li><a href="https://developer.mozilla.org/es/">developer.mozilla.org</a></li>     
+        </ul>
+    </aside>
+    <footer>Pié de página
+        <nav>
+            <ul>
+                <li>Enlaces a RR.SS.</li>
+            </ul>
+        </nav>
+        <address>Avenida Buenos Aires, 40</address>
+    </footer>
+    
+</body>
+</html>
