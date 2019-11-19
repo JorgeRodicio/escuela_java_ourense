@@ -1,0 +1,79 @@
+
+/* Selector {propiedad_1=...; propiedad_2=...;}*/
+
+h1, h2, h3{
+    background-color: tomato;
+}
+header {
+    background-color: rgb(255, 255, 255);
+}
+/* Selector de etiqueta*/
+body {
+    background-color:lightblue;
+    
+}
+
+ul {
+    margin: 20px;
+    background-color: rgb(196, 196, 196);
+}
+
+article section { /* section descendiente de article (hijo, nieto...)*/
+    margin: 20px;
+    background-color: red;
+    width: 80%;
+}
+
+article > section { /* section hijo de article*/
+    margin: 20px;
+    background-color: red;
+    width: 100px;
+}
+/*Clase azul chillón*/
+.azul-chillon{
+    background-color: blue;
+}
+/*ID*/
+#enlace-menu, #enlace-css{
+    color: yellow;
+}
+a:hover {
+    font-size: 30px;
+    background-color: aqua;
+}
+
+.elemento-menu{
+    display: inline; /*display: forma de mostrar. None para no mostrar*/
+}
+
+.titulo{
+    position: relative;
+    left: 5px;
+    top: 5px;
+    display: inline-block;
+}
+.macro-colocado{
+    display: block;
+    width: 600px;
+}
+
+.articulo {
+    border: black solid;
+}
+
+@media screen and (max-width: 991px) {
+    article section{
+        width: 40%;
+        display: inline-block;
+        border: red solid;
+    }
+}
+
+@media screen and (min-width: 991px) {
+    article section{
+        width: 80%;
+        display: inline-block;
+        border: blue solid;
+    }
+}
+

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="componente_eventos_1">
+        <label> Evento con listener</label>
+        <input id="input_listo" size="100"/>
+        <input id="btn_listo" type="button"/>
+    </div>
+    
+    <br>
+    <div id="componente_eventos_2">
+        <label> Evento con listener 2</label>
+        <input id="input_listo_2" size="100"/>
+        <input id="btn_listo_2" type="button"/>
+            
+    </div>
+    
+    <div id="info_evento"></div>
+    <br>
+    <div id="info_evento_2"></div>
+
+    <br/>
+    <script>
+        
+        
+
+        
+
+        // btn_listo_2.value = "Pulsaaaaaaa";
+        // btn_listo_2.addEventListener("click", funcionCallBackAlPulsar);
+        // btn_listo_2.addEventListener("click", funcionCallBackAlPulsar_Dos);
+ 
+
+        
+        // function funcionCallBackAlPulsar(evento){
+
+        //     if(evento.currentTarget === btn_listo){
+        //         input_listo.value = "Type evento: " + evento.type;
+        //         let info_evento = document.getElementById("info_evento");
+                
+        //         evento.currentTarget.value = "Puede repetir";
+        //         info_evento.innerHTML += "evento.currentTarget.id = " + evento.currentTarget.id;
+        //         info_evento.className = "div-marco";
+        //         // Al hacer el removeEventListener es la manera de hacer que sólo lo puedas pulsar una vez
+        //         btn_listo.removeEventListener("click", funcionCallBackAlPulsar);
+        //     }
+
+        //     if(evento.currentTarget === btn_listo_2){
+        //         input_listo_2.value = "Type evento: " + evento.type;
+        //         let info_evento = document.getElementById("info_evento");
+                
+        //         evento.currentTarget.value = "Puede repetir";
+        //         info_evento_2.innerHTML += "evento.currentTarget.id = " + evento.currentTarget.id;
+        //         info_evento_2.className = "div-marco";
+        //         // Al hacer el removeEventListener es la manera de hacer que sólo lo puedas pulsar una vez
+        //         btn_listo_2.removeEventListener("click", funcionCallBackAlPulsar);
+        //     }                    
+        // }
+    
+
+
+        // function funcionCallBackAlPulsar_Dos(evento){
+        //     document.getElementsByTagName("body")[0].className = "fondo-body";
+        // }
+
+        class GestorEventos{
+            
+
+            constructor(id_input, id_boton, id_div){
+                this.input = document.getElementById(id_input);
+                this.boton = document.getElementById(id_boton);
+                this.div = document.getElementById(id_div);
+
+                
+                this.boton.addEventListener("click", this.funcionCallBackAlPulsar);
+                this.boton.addEventListener("click", this.funcionCallBackAlPulsar_Dos);
+            }
+            
+            funcionCallBackAlPulsar = (evento) => {
+                this.input.value = "Type evento: " + evento.type;                      
+                evento.currentTarget.value = "Puede repetir";
+                this.div.innerHTML += "evento.currentTarget.id = " + evento.currentTarget.id;
+                this.div.className = "div-marco";
+                // Al hacer el removeEventListener es la manera de hacer que sólo lo puedas pulsar una vez
+                this.boton.removeEventListener("click", funcionCallBackAlPulsar);
+            }
+           
+
+            funcionCallBackAlPulsar_Dos = (evento) => {
+                var color1 = Math.floor(Math.random() * 255); 
+                var color2 = Math.floor(Math.random() * 255); 
+                var color3 = Math.floor(Math.random() * 255); 
+
+                document.getElementsByTagName("body")[0].style = "background-color: rgb(" + color1 +", " + color2 +", "+color3+")";
+                //boton.removeEventListener("click", funcionCallBackAlPulsar_Dos);
+            }
+
+            
+        }
+
+        var input_listo = document.getElementById("input_listo");
+        var btn_listo = document.getElementById("btn_listo");
+        btn_listo.value = "Pulsa listillo";
+        var div_1 = document.getElementById("info_evento");
+        
+        // btn_listo.value = "Pulsa listillo";
+        // btn_listo.addEventListener("click", funcionCallBackAlPulsar);
+        // btn_listo.addEventListener("click", funcionCallBackAlPulsar_Dos);
+
+        var input_listo_2 = document.getElementById("input_listo_2");
+        var btn_listo_2 = document.getElementById("btn_listo_2");
+        btn_listo_2.value = "Pulsaaaaaaa";
+        var div_2 = document.getElementById("info_evento_2");
+
+        var gestorEventosBtn1 = new GestorEventos("input_listo", "btn_listo", "div_1");
+        var gestorEventosBtn1 = new GestorEventos("input_listo_2", "btn_listo_2", "div_2");
+
+
+    </script>
+    <style>
+        .div-marco {
+            border: blue solid; 
+            background-color: lightgrey;
+        }
+
+        .fondo-body {
+            background-color: lightgreen; 
+        }
+    </style>
+</body>
+</html>
