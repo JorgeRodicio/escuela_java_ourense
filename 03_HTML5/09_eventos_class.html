@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="componente_eventos_1">
+        <label> Evento con listener</label>
+        <input id="input_listo" size="100"/>
+        <input id="btn_listo" value="Pulsame" type="button"/>
+    </div>
+    
+    <br>
+    <div id="componente_eventos_2">
+        <label> Evento con listener 2</label>
+        <input id="input_listo_2"  size="100"/>
+        <input id="btn_listo_2" value="Pulsame otro" type="button"/>          
+    </div>
+    
+    <div id="info_evento"></div>
+    <br>
+    <div id="info_evento_2"></div>
+
+    <br/>
+    <div onclick="alert('Llamanda envento desde HTML');">
+        Zona onclick="alert();"
+    </div>
+    <br>
+    <div id="quiereUnOnClick">
+            Zona elemDOM.onclick=function(...){...}
+        </div>
+    <script src="js/09_eventos_class.js"></script>
+    <script>
+        //Esperar a que se cargue la página para empezar a hacer cosas
+        window.addEventListener("load", function(){
+            let quiereUnOnClick = document.getElementById("quiereUnOnClick");
+
+            quiereUnOnClick.onclick = function(evento){
+                alert("Llamada desde JS, propiedad .onClick");
+            }
+
+
+            let gestorEventos = new GestorEventosES5("input_listo", "btn_listo", "info_evento");
+            let gestorEventos2 = new GestorEventos("input_listo_2", "btn_listo_2", "info_evento_2");
+
+        });
+        
+    </script>
+
+
+    <style>
+        .div-marco {
+            border: blue solid; 
+            background-color: lightgrey;
+        }
+
+        .fondo-body {
+            background-color: lightgreen; 
+        }
+    </style>
+</html>
