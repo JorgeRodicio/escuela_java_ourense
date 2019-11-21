@@ -24,14 +24,14 @@ public class HolaCssServlet extends HttpServlet{
         respuesta.setContentType("text/css;charset=UTF-8");
         try(PrintWriter salida = respuesta.getWriter())
         { 
-            salida.print(".color-rojo{\n" +
+            salida.println(".color-rojo{\n" +
             "    background-color: red;\n" +
             "}");
             
             
             for (int i = 0; i < 10; i++) {
                 int tamaño = i + 20;
-                salida.print(".tam_letra_" + i +"{\n" +
+                salida.println(".tam_letra_" + i +"{\n" +
             "    font-size: " +tamaño+" \n" +
             "}");
             }

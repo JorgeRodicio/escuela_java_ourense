@@ -8,12 +8,28 @@
         <servlet-name>Hola_Servlet_CSS</servlet-name>
         <servlet-class>com.vn.appweb.servlets.HolaCssServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ParamServlet</servlet-name>
+        <servlet-class>com.vn.appweb.servlets.ParamServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletJson</servlet-name>
+        <servlet-class>com.vn.appweb.servlets.ServletJson</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Hola_Servlet_HTML</servlet-name>
-        <url-pattern>/saludos/hola</url-pattern>   
+        <url-pattern>/saludos/hola</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Hola_Servlet_CSS</servlet-name>
-        <url-pattern>/saludos/holacss</url-pattern>   
+        <url-pattern>/saludos/holacss</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ParamServlet</servlet-name>
+        <url-pattern>/formulario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletJson</servlet-name>
+        <url-pattern>/datosjson</url-pattern>
     </servlet-mapping>
 </web-app>
