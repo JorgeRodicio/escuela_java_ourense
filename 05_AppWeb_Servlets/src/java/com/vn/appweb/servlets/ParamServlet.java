@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -112,9 +113,9 @@ public class ParamServlet extends HttpServlet {
                 "root",
                 "1234")){
                 
-                String sqlQuery = "insert into persona (nombre, email) values ('" + nombre + "', '" + email + "')";
-                Statement sentenciaSQL = con.createStatement();
-                sentenciaSQL.executeUpdate(sqlQuery);
+//                String sqlQuery = "insert into persona (nombre, email) values (?,?)";
+//                PreparedStatement sentenciaSQL = con.createStatement();
+//                sentenciaSQL.executeUpdate(sqlQuery);
                 
             }catch(SQLException ex){
                 out.println("<p style='color: red'>Error SQL: " +ex.getMessage() + "</p>" );
