@@ -24,6 +24,15 @@ public class ServicioUsuarios {
         dao = new DaoUsuarioDerby();
     }
     
+    
+    /**
+     * Metodo para validar los distintos campos del usuario, email,password,nombre y edad
+     * @param email
+     * @param password
+     * @param nombre
+     * @param edad
+     * @return 
+     */
     private boolean validarDatos(String email, String password, String nombre, String edad){
         
         if (dao.leer(email) != null){
@@ -58,7 +67,15 @@ public class ServicioUsuarios {
         
     }
        
-    
+    /**
+     * Se crea el usuario solo si se cumplen los objetivos de validacion de campos
+     * @param email
+     * @param password
+     * @param nombre
+     * @param edad
+     * @return
+     * @throws Exception 
+     */
     public Usuario crear(String email, String password, String nombre, String edad) throws Exception {
         if (validarDatos(email, password, nombre, edad)){
             int edadInt = Integer.parseInt(edad);
@@ -98,6 +115,8 @@ public class ServicioUsuarios {
         
         return modificar(id, user);
     }
+    
+    
     
     public Usuario modificar(int id, Usuario objConDatosNuevos) throws Exception {
         String email = objConDatosNuevos.getEmail();
