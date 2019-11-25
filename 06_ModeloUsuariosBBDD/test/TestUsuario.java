@@ -98,7 +98,7 @@ public class TestUsuario {
 //         ser.eliminar(14);
 //         ser.eliminar(15);
 
-//Modificar
+//Modificar un usuario por id
          
          ser.modificar(13, new Usuario("Pacojonesnew", "usuariomodificado@user", 22, "contraseñanueva"));
            assertEquals("Pacojonesnew", ser.leer(13).getNombre());
