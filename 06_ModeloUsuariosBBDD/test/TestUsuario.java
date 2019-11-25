@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+import com.vn.modeloUsuarios.DaoUsuarioDerby;
+import com.vn.modeloUsuarios.Usuario;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -11,17 +13,17 @@ import static org.junit.Assert.*;
  *
  * @author pc
  */
-public class TestModeloUsuarios {
+public class TestUsuario {
     
-    public TestModeloUsuarios() {
+    public TestUsuario() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
     @Test
-    public void testUsuarios() {
-        //Nombre
-       
+    public void testInsertar() throws Exception {
+        DaoUsuarioDerby dao = new DaoUsuarioDerby();
+        dao.crear(new Usuario("pepito@pepito.com", "pepe", 19, "1234"));
     }
 }
