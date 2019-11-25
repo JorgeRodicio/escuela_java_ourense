@@ -26,7 +26,7 @@ public class ServicioUsuarios {
     
     private boolean validarDatos(String email, String password, String nombre, String edad){
         
-        if (dao.leer(email) == null){
+        if (dao.leer(email) != null){
             System.err.println("ERROR: EMAIL EXISTENTE");
             return false;
         }
