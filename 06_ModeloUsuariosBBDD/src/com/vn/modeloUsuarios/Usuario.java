@@ -24,6 +24,14 @@ public class Usuario {
         
     }
     
+     public Usuario(String nombre, String email, int edad, String password, int id) {     
+        this.nombre = nombre;
+        this.email = email;
+        this.edad = edad;
+        this.password = password;
+        this.id = id;
+    }
+    
     public int getId(){
         return id;
     }
@@ -62,7 +70,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "nombre=" + nombre + ", email=" + email + ", edad=" + edad + ", password=" + password + '}';
+        return "Usuario{" + "nombre=" + nombre + ", email=" + email + ", edad=" + edad + ", password=" + password + ", id= " +  id +'}';
     }
     
     

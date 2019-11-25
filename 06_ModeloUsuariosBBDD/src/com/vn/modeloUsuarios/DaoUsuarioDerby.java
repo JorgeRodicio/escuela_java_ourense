@@ -110,7 +110,7 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
             
             
             //String sqlQuery = "SELECT nombre, email FROM persona WHERE nombre = ?";
-            String sqlQuery = "SELECT email, password, nombre, age FROM USUARIO WHERE email = ?";
+            String sqlQuery = "SELECT email, password, nombre, age, id FROM USUARIO WHERE email = ?";
             //Sentencia preparada para evitar SQL injection
             PreparedStatement sentenciaSQL = con.prepareStatement(sqlQuery);
             sentenciaSQL.setString(1, email);
@@ -122,7 +122,8 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
                 String password = usu.getString(2);
                 String nombre = usu.getString(3);
                 int edad = Integer.parseInt(usu.getString(4));
-                Usuario usuario = new Usuario(nombre, mail, edad, password);
+                String id = usu.getString(5);
+                Usuario usuario = new Usuario(nombre, mail, edad, password, Integer.parseInt(id));
                 return usuario;
             }
                                                                              
@@ -131,7 +132,8 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
         } 
         return null;
     }
-
+    
+    
     @Override
     public List<Usuario> leer() {
         ArrayList<Usuario> lista = new ArrayList<>();
@@ -163,6 +165,45 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
         } 
         return lista;
     }
+    
+    
+    public List<Usuario> leerPorNombre(String nombre) {
+        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+        
+        try(Connection con = DriverManager.getConnection(      
+            "jdbc:derby://localhost:1527/db_usuarios",
+            "root",
+            "1234")){
+            
+            
+            //String sqlQuery = "SELECT nombre, email FROM persona WHERE nombre = ?";
+            String sqlQuery = "SELECT email, password, nombre, age, id FROM usuario WHERE TRIM(UPPER(nombre)) LIKE ? ESCAPE '!'";
+            //Sentencia preparada para evitar SQL injection
+            PreparedStatement sentenciaSQL = con.prepareStatement(sqlQuery);
+            nombre = nombre.toUpperCase().trim();
+            nombre = nombre.replace("%", "!%");
+            sentenciaSQL.setString(1, "%" + nombre + "%"); 
+            
+            ResultSet usu = sentenciaSQL.executeQuery();
+            
+            while(usu.next()){
+                String mail = usu.getString(1);
+                String password = usu.getString(2);
+                String nombreUser = usu.getString(3);
+                int edad = Integer.parseInt(usu.getString(4));
+                String id = usu.getString(5);
+                Usuario usuario = new Usuario(nombreUser, mail, edad, password, Integer.parseInt(id));
+                
+                listaUsuarios.add(usuario);
+                
+            }
+            return listaUsuarios;
+                                                                             
+        }catch(SQLException ex){   
+            
+        } 
+        return null;
+    }
 
     @Override
     public Usuario modificar(int id, Usuario usuario) throws Exception {
@@ -170,9 +211,7 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
             "jdbc:derby://localhost:1527/db_usuarios",
             "root",
             "1234")){
-            
-
-            
+      
             //String sqlQuery = "SELECT nombre, email FROM persona WHERE nombre = ?";
             String sqlQuery = "UPDATE USUARIO SET email = ? ,password = ? ,nombre = ? ,age = ? WHERE id = ?";
             //Sentencia preparada para evitar SQL injection

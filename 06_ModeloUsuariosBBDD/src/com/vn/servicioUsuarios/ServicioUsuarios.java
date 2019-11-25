@@ -60,23 +60,44 @@ public class ServicioUsuarios {
        
     
     public Usuario crear(String email, String password, String nombre, String edad) throws Exception {
-        return null;
+        if (validarDatos(email, password, nombre, edad)){
+            int edadInt = Integer.parseInt(edad);
+            Usuario usuario = new Usuario(nombre, email, edadInt, password);
+            dao.crear(usuario);
+            return dao.leer(email);
+        }else{
+            return null;
+        }
     }
 
     
     public Usuario leer(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.leer(id);
     }
 
    
     public List<Usuario> leer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.leer();
     }
-
     
-    public Usuario modificar(int id, Usuario objConDatosNuevos) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public List<Usuario> leerPorNombre(String nombre) {
+        
+        if("".equals(nombre)){
+            return dao.leer();
+        }else{
+            return dao.leerPorNombre(nombre);
+        }
+        
     }
+    
+//    public Usuario modificar(int id, Usuario objConDatosNuevos) throws Exception {
+//        String email = objConDatosNuevos.getEmail();
+//        String password = objConDatosNuevos.getPassword();
+//        String nombre = objConDatosNuevos.getNombre();
+//        String edad = Integer.toString(objConDatosNuevos.getEdad());
+//        
+//    }
 
     
     public void eliminar(int id) throws Exception {
