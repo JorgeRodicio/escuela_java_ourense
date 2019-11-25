@@ -73,21 +73,30 @@ public class ServicioUsuarios {
     public Usuario leer(int id) {
         return dao.leer(id);
     }
+    
+    public Usuario leer(String email){
+        return dao.leer(email);
+    }
 
    
     public List<Usuario> leer() {
         return dao.leer();
     }
-    
-    
+      
     public List<Usuario> leerPorNombre(String nombre) {
         
         if("".equals(nombre)){
             return dao.leer();
         }else{
             return dao.leerPorNombre(nombre);
-        }
+        }    
+    }
+    
+    public Usuario modificar(int id, String email, String password, String nombre, String edad) throws Exception{
+        int edadInt = Integer.parseInt(edad);
+        Usuario user = new Usuario(nombre, email, edadInt, password);
         
+        return modificar(id, user);
     }
     
     public Usuario modificar(int id, Usuario objConDatosNuevos) throws Exception {
@@ -105,11 +114,18 @@ public class ServicioUsuarios {
         
     }
    
-    public Usuario eliminar(int id) throws Exception {
-        Usuario user = dao.leer(id);     
-        dao.eliminar(id);
-        return user;
+    public boolean eliminar(int id) throws Exception {
+        Usuario user = dao.leer(id);  
+        
+        if(user !=  null){
+            dao.eliminar(id);
+            return true;
+        }else{
+            return false;
+        }
     }
+    
+    
 
     
     
