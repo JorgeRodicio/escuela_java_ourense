@@ -27,6 +27,9 @@ import java.util.logging.Logger;
  */
 public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
 
+    /**
+     * Constructor del DAO en el que se carga la BBDD
+     */
     public DaoUsuarioDerby(){
         try{
             Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -37,6 +40,12 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
         }       
     }
     
+    /**
+     * Método para insertar un usuario en la BBDD
+     * @param usuario
+     * @return
+     * @throws Exception 
+     */
     @Override
     public Usuario crear(Usuario usuario) throws Exception {
                  
@@ -70,6 +79,11 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
         return null;
     }
 
+    /**
+     * Leer un usuario de la BBDD mediante el id
+     * @param id
+     * @return 
+     */
     @Override
     public Usuario leer(int id) {
         try(Connection con = DriverManager.getConnection(      
@@ -102,7 +116,11 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
         return null;
     }
     
-    
+    /**
+     * Leer un usuario de la BDD mediante el email
+     * @param email
+     * @return 
+     */
     public Usuario leer(String email) {
         try(Connection con = DriverManager.getConnection(      
             "jdbc:derby://localhost:1527/db_usuarios",
@@ -133,7 +151,10 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
         return null;
     }
     
-    
+    /**
+     * Obtener todos los usuarios de la BBDD
+     * @return 
+     */
     @Override
     public List<Usuario> leer() {
         ArrayList<Usuario> lista = new ArrayList<>();
@@ -167,7 +188,11 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
         return lista;
     }
     
-    
+    /**
+     * Obtener todos los usuarios de la BBDD con algun nombre parecido al que le pasas por parámetro
+     * @param nombre
+     * @return 
+     */
     public List<Usuario> leerPorNombre(String nombre) {
         ArrayList<Usuario> listaUsuarios = new ArrayList<>();
         
@@ -206,6 +231,13 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
         return null;
     }
 
+    /**
+     * Modificar el usuario de la BBDD mediante su id con los datos del objeto que se pasa como parámetro
+     * @param id
+     * @param usuario
+     * @return
+     * @throws Exception 
+     */
     @Override
     public Usuario modificar(int id, Usuario usuario) throws Exception {
         try(Connection con = DriverManager.getConnection(      

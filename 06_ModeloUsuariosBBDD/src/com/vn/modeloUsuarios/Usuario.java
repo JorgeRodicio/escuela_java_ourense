@@ -16,6 +16,13 @@ public class Usuario {
     private String password;
     private int id;
 
+    /**
+     * Constructor de usuario 
+     * @param nombre
+     * @param email
+     * @param edad
+     * @param password 
+     */
     public Usuario(String nombre, String email, int edad, String password) {     
         this.nombre = nombre;
         this.email = email;
@@ -24,7 +31,7 @@ public class Usuario {
         
     }
     
-     public Usuario(String nombre, String email, int edad, String password, int id) {     
+    public Usuario(String nombre, String email, int edad, String password, int id) {     
         this.nombre = nombre;
         this.email = email;
         this.edad = edad;
