@@ -19,6 +19,7 @@ import static org.junit.Assert.*;
 public class TestUsuario {
     
     public TestUsuario() {
+        
     }
 
     // TODO add test methods here.
@@ -75,34 +76,51 @@ public class TestUsuario {
     public void CrearUsuarioValidos() throws Exception {
          ServicioUsuarios ser = new ServicioUsuarios();
          
-         //Crear 5 usuarios
-//         ser.crear("usuario1@user", "abc1234", "Mandaloriano", "34");
-//         ser.crear("usuario2@user", "abc1234", "Manolito", "13");
-//         ser.crear("usuario3@user", "abc123421342", "Pacojones", "78");
-//         ser.crear("usuario4@user", "abc123342", "Nanonaino", "56");
-//         ser.crear("usuario5@user", "abc123142", "Hasancito", "15");
+      //   Crear 5 usuarios
+         ser.crear("usuario1@user", "abc1234", "Mandaloriano", "34");
+         ser.crear("usuario2@user", "abc1234", "Manolito", "13");
+         ser.crear("usuario3@user", "abc123421342", "Pacojones", "78");
+         ser.crear("usuario4@user", "abc123342", "Nanonaino", "56");
+         ser.crear("usuario5@user", "abc123142", "Hasancito", "15");
          
          
          //comprobar
            assertEquals("Mandaloriano", ser.leer(11).getNombre());
-//           ser.crear("user1@asdxzc", "1231231", "Prueba", "23");
-//           ser.crear("user2@asdxzcz", "1231231", "Prueba", "23");
-//           ser.crear("user3@asdxzcz", "1231231", "Prueba", "23");
+           ser.crear("user1@asdxzc", "1231231", "Prueba", "23");
+           ser.crear("user2@asdxzcz", "1231231", "Prueba", "23");
+           ser.crear("user3@asdxzcz", "1231231", "Prueba", "23");
            assertEquals(3, ser.leerPorNombre("Prueba").size());
            
-         //Eliminar usuarios creados
-//         ser.eliminar(10);
-//         ser.eliminar(11);
-//         ser.eliminar(12);
-//         ser.eliminar(13);
-//         ser.eliminar(14);
-//         ser.eliminar(15);
+     
 
 //Modificar un usuario por id
          
          ser.modificar(13, new Usuario("Pacojonesnew", "usuariomodificado@user", 22, "contraseñanueva"));
            assertEquals("Pacojonesnew", ser.leer(13).getNombre());
          
+    }
+       @Test
+    public void ModificarUsuariosInvalidos() throws Exception {
+    ServicioUsuarios ser = new ServicioUsuarios();
+    
+    ser.modificar(16 ,  new Usuario("PruebaModificada", "uasdas@sadsa", 54, "1231231"));  
+    ser.modificar(16 ,  new Usuario("PruebaModificada", "u", 10, "1231231"));  
+    }
+ 
+    
+      @Test
+    public void EliminarUsuarios() throws Exception {
+         ServicioUsuarios ser = new ServicioUsuarios();
+        //Eliminar usuarios creados
+         ser.eliminar(10);
+         ser.eliminar(11);
+         ser.eliminar(12);
+         ser.eliminar(13);
+         ser.eliminar(14);
+         ser.eliminar(15);
+         ser.eliminar(16);
+         ser.eliminar(17);
+         ser.eliminar(18);
     }
     
 }
