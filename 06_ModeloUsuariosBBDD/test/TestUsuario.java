@@ -26,16 +26,22 @@ public class TestUsuario {
     @Test
     public void testInsertar() throws Exception {
         DaoUsuarioDerby dao = new DaoUsuarioDerby();
-        dao.crear(new Usuario("pepe", "pepe@pepepepepe", 19, "1234"));
         
-        assertEquals(dao.leer(4).getNombre(), "pepe");
-        System.out.println(dao.modificar(4, new Usuario("psd","jdasojda@sajd",34,"12312")));
-        
+//        for (int i = 0; i < 10; i++) {
+//            dao.crear(new Usuario("Nombre " + i, "nombre" + i + "@nombre", 19, "1234"));
+//        }
+//        
+//        
+//        assertEquals(dao.leer(4).getNombre(), "pepe");
+//        System.out.println(dao.modificar(4, new Usuario("psd","jdasojda@sajd",34,"12312")));
+//        
         List<Usuario> lista = dao.leer();
         
         for (int i = 0; i < lista.size(); i++) {
             System.out.println(lista.get(i).toString());
-        }
+        } 
         
+        System.out.println("\n\n\n" + dao.leer("nombre1@nombre"));
+       
     }
 }

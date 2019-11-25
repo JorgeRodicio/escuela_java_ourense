@@ -100,6 +100,37 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
         } 
         return null;
     }
+    
+    
+    public Usuario leer(String email) {
+        try(Connection con = DriverManager.getConnection(      
+            "jdbc:derby://localhost:1527/db_usuarios",
+            "root",
+            "1234")){
+            
+            
+            //String sqlQuery = "SELECT nombre, email FROM persona WHERE nombre = ?";
+            String sqlQuery = "SELECT email, password, nombre, age FROM USUARIO WHERE email = ?";
+            //Sentencia preparada para evitar SQL injection
+            PreparedStatement sentenciaSQL = con.prepareStatement(sqlQuery);
+            sentenciaSQL.setString(1, email);
+            
+            ResultSet usu = sentenciaSQL.executeQuery();
+            
+            while(usu.next()){
+                String mail = usu.getString(1);
+                String password = usu.getString(2);
+                String nombre = usu.getString(3);
+                int edad = Integer.parseInt(usu.getString(4));
+                Usuario usuario = new Usuario(nombre, mail, edad, password);
+                return usuario;
+            }
+                                                                             
+        }catch(SQLException ex){   
+            
+        } 
+        return null;
+    }
 
     @Override
     public List<Usuario> leer() {
