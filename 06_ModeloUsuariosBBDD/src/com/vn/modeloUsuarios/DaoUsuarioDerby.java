@@ -79,7 +79,7 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
             
             
             //String sqlQuery = "SELECT nombre, email FROM persona WHERE nombre = ?";
-            String sqlQuery = "SELECT email, password, nombre, age FROM USUARIO WHERE id = ?";
+            String sqlQuery = "SELECT email, password, nombre, age, id FROM USUARIO WHERE id = ?";
             //Sentencia preparada para evitar SQL injection
             PreparedStatement sentenciaSQL = con.prepareStatement(sqlQuery);
             sentenciaSQL.setString(1, Integer.toString(id));
@@ -91,7 +91,8 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
                 String password = usu.getString(2);
                 String nombre = usu.getString(3);
                 int edad = Integer.parseInt(usu.getString(4));
-                Usuario usuario = new Usuario(nombre, email, edad, password);
+                int idUser = Integer.parseInt(usu.getString(4));
+                Usuario usuario = new Usuario(nombre, email, edad, password, idUser);
                 return usuario;
             }
                                                                              
@@ -107,8 +108,7 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
             "jdbc:derby://localhost:1527/db_usuarios",
             "root",
             "1234")){
-            
-            
+                       
             //String sqlQuery = "SELECT nombre, email FROM persona WHERE nombre = ?";
             String sqlQuery = "SELECT email, password, nombre, age, id FROM USUARIO WHERE email = ?";
             //Sentencia preparada para evitar SQL injection
@@ -144,7 +144,7 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
             "1234")){
              
             //String sqlQuery = "SELECT nombre, email FROM persona WHERE nombre = ?";
-            String sqlQuery = "SELECT email, password, nombre, age FROM USUARIO";
+            String sqlQuery = "SELECT email, password, nombre, age, id FROM USUARIO";
             //Sentencia preparada para evitar SQL injection
             PreparedStatement sentenciaSQL = con.prepareStatement(sqlQuery);
             
@@ -156,7 +156,8 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
                 String password = usu.getString(2);
                 String nombre = usu.getString(3);
                 int edad = Integer.parseInt(usu.getString(4));
-                Usuario usuario = new Usuario(nombre, email, edad, password);
+                int id = Integer.parseInt(usu.getString(4));
+                Usuario usuario = new Usuario(nombre, email, edad, password, id);
                 lista.add(usuario);
             }
                                                                              
