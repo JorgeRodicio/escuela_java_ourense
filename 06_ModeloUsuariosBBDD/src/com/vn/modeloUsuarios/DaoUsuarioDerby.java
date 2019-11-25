@@ -98,13 +98,39 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
         }catch(SQLException ex){   
             
         } 
-        
         return null;
     }
 
     @Override
     public List<Usuario> leer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Usuario> lista = new ArrayList<>();
+        
+        try(Connection con = DriverManager.getConnection(      
+            "jdbc:derby://localhost:1527/db_usuarios",
+            "root",
+            "1234")){
+             
+            //String sqlQuery = "SELECT nombre, email FROM persona WHERE nombre = ?";
+            String sqlQuery = "SELECT email, password, nombre, age FROM USUARIO";
+            //Sentencia preparada para evitar SQL injection
+            PreparedStatement sentenciaSQL = con.prepareStatement(sqlQuery);
+            
+            
+            ResultSet usu = sentenciaSQL.executeQuery();
+            
+            while(usu.next()){
+                String email = usu.getString(1);
+                String password = usu.getString(2);
+                String nombre = usu.getString(3);
+                int edad = Integer.parseInt(usu.getString(4));
+                Usuario usuario = new Usuario(nombre, email, edad, password);
+                lista.add(usuario);
+            }
+                                                                             
+        }catch(SQLException ex){   
+            
+        } 
+        return lista;
     }
 
     @Override

@@ -6,6 +6,8 @@
 
 import com.vn.modeloUsuarios.DaoUsuarioDerby;
 import com.vn.modeloUsuarios.Usuario;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -28,6 +30,11 @@ public class TestUsuario {
         
         assertEquals(dao.leer(4).getNombre(), "pepe");
         
+        List<Usuario> lista = dao.leer();
+        
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println(lista.get(i).toString());
+        }
         
     }
 }
