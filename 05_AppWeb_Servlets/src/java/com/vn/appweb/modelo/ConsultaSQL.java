@@ -50,14 +50,14 @@ public class ConsultaSQL {
             sentenciaSQL.setString(1, "%" + busq .toUpperCase().trim()+ "%"); //Sustituir es primer ? por '(contenido del nombre)'
             ResultSet resultado = sentenciaSQL.executeQuery();
             
-            while(resultado.next()){
-                String nombre = resultado.getString(1); //nombre
-                String email = resultado.getString(2);   //email
-                DatosPersona dp = new DatosPersona();
-                dp.setNombre(nombre);
-                dp.setEmail(email);
-                datos.add(dp);
-            }
+            
+            String nombre = resultado.getString(1); //nombre
+            String email = resultado.getString(2);   //email
+            DatosPersona dp = new DatosPersona();
+            dp.setNombre(nombre);
+            dp.setEmail(email);
+            datos.add(dp);
+            
             
             return datos;
 

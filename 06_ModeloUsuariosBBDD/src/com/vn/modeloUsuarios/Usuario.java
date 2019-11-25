@@ -16,12 +16,16 @@ public class Usuario {
     private String password;
     private int id;
 
-    public Usuario(String nombre, String email, int edad, String password) {
+    public Usuario(String nombre, String email, int edad, String password) {     
         this.nombre = nombre;
         this.email = email;
         this.edad = edad;
         this.password = password;
         
+    }
+    
+    public int getId(){
+        return id;
     }
 
     public String getNombre() {
@@ -55,5 +59,12 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "nombre=" + nombre + ", email=" + email + ", edad=" + edad + ", password=" + password + '}';
+    }
+    
+    
        
 }
