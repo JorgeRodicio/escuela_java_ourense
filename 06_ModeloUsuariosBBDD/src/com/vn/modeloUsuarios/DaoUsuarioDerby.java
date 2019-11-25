@@ -108,13 +108,63 @@ public class DaoUsuarioDerby implements IDaoGeneric<Usuario>{
     }
 
     @Override
-    public Usuario modificar(int id, Usuario objConDatosNuevos) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public Usuario modificar(int id, Usuario usuario) throws Exception {
+        try(Connection con = DriverManager.getConnection(      
+            "jdbc:derby://localhost:1527/db_usuarios",
+            "root",
+            "1234")){
+            
+
+            
+            //String sqlQuery = "SELECT nombre, email FROM persona WHERE nombre = ?";
+            String sqlQuery = "UPDATE USUARIO SET email = ? ,password = ? ,nombre = ? ,age = ? WHERE id = ?";
+            //Sentencia preparada para evitar SQL injection
+            PreparedStatement sentenciaSQL = con.prepareStatement(sqlQuery);
+            
+            String email = usuario.getEmail();
+            String password = usuario.getPassword();
+            String nombre = usuario.getNombre();
+            String edad = Integer.toString(usuario.getEdad());
+            String id2 = Integer.toString(id);
+            
+            sentenciaSQL.setString(1, email); 
+            sentenciaSQL.setString(2, password); 
+            sentenciaSQL.setString(3, nombre); 
+            sentenciaSQL.setString(4, edad); 
+            sentenciaSQL.setString(5, id2);
+            sentenciaSQL.executeUpdate();
+                                   
+            return usuario;              
+
+        }catch(SQLException ex){   
+            
+        } 
+        
+        return null;
+  }
 
     @Override
     public void eliminar(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+          try(Connection con = DriverManager.getConnection(      
+            "jdbc:derby://localhost:1527/db_usuarios",
+            "root",
+            "1234")){
+            
+            
+            //String sqlQuery = "SELECT nombre, email FROM persona WHERE nombre = ?";
+            String sqlQuery = "DELETE FROM USUARIO WHERE id = ?";
+            //Sentencia preparada para evitar SQL injection
+            PreparedStatement sentenciaSQL = con.prepareStatement(sqlQuery);
+            sentenciaSQL.setString(1, Integer.toString(id));
+                     
+            sentenciaSQL.executeUpdate();
+                                                                             
+        }catch(SQLException ex){   
+            
+        } 
+        
+        
     }
     
 }

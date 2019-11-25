@@ -24,10 +24,10 @@ public class TestUsuario {
     @Test
     public void testInsertar() throws Exception {
         DaoUsuarioDerby dao = new DaoUsuarioDerby();
-        //dao.crear(new Usuario("pepe", "pepe@pepepepepe", 19, "1234"));
+        dao.crear(new Usuario("pepe", "pepe@pepepepepe", 19, "1234"));
         
         assertEquals(dao.leer(4).getNombre(), "pepe");
-        
+        System.out.println(dao.modificar(4, new Usuario("psd","jdasojda@sajd",34,"12312")));
         
     }
 }
