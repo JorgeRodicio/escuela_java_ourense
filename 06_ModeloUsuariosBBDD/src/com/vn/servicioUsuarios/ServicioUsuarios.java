@@ -69,7 +69,6 @@ public class ServicioUsuarios {
             return null;
         }
     }
-
     
     public Usuario leer(int id) {
         return dao.leer(id);
@@ -91,17 +90,25 @@ public class ServicioUsuarios {
         
     }
     
-//    public Usuario modificar(int id, Usuario objConDatosNuevos) throws Exception {
-//        String email = objConDatosNuevos.getEmail();
-//        String password = objConDatosNuevos.getPassword();
-//        String nombre = objConDatosNuevos.getNombre();
-//        String edad = Integer.toString(objConDatosNuevos.getEdad());
-//        
-//    }
-
-    
-    public void eliminar(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Usuario modificar(int id, Usuario objConDatosNuevos) throws Exception {
+        String email = objConDatosNuevos.getEmail();
+        String password = objConDatosNuevos.getPassword();
+        String nombre = objConDatosNuevos.getNombre();
+        String edad = Integer.toString(objConDatosNuevos.getEdad());
+        
+        if(validarDatos(email, password, nombre, edad)){
+            dao.modificar(id, objConDatosNuevos);
+            return dao.leer(email);
+        }else{
+            return null;
+        }
+        
+    }
+   
+    public Usuario eliminar(int id) throws Exception {
+        Usuario user = dao.leer(id);     
+        dao.eliminar(id);
+        return user;
     }
 
     

@@ -6,6 +6,7 @@
 
 import com.vn.modeloUsuarios.DaoUsuarioDerby;
 import com.vn.modeloUsuarios.Usuario;
+import com.vn.servicioUsuarios.ServicioUsuarios;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
