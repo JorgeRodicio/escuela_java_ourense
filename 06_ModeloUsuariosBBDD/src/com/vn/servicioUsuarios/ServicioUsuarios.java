@@ -35,11 +35,41 @@ public class ServicioUsuarios {
      */
     private boolean validarDatos(String email, String password, String nombre, String edad){
         
-        if (dao.leer(email) != null){
-            System.err.println("ERROR: EMAIL EXISTENTE");
+//        if (dao.leer(email) != null){
+//            System.err.println("ERROR: EMAIL EXISTENTE");
+//            return false;
+//        }
+        
+        String regExpEmail = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$";
+                      
+        if(email.length() <= 1 || !email.matches(regExpEmail)){
+            System.err.println("ERROR: EMAIL INVÁLIDO");
             return false;
         }
         
+        if(password.length() < 4){
+            System.err.println("ERROR: PASSWORD INVÁLIDA");
+            return false;
+        }
+        
+        String regExpNombre = "^([A-Z]{1}[a-zñáéíóú]+[\\s]*)+$";
+        if(nombre.length() <= 1 || !nombre.matches(regExpNombre)){
+            System.err.println("ERROR: NOMBRE INVÁLIDO");
+            return false;
+        }
+        
+        if(Integer.parseInt(edad) <= 12 ){
+            System.err.println("ERROR: EDAD INVÁLIDA");
+            return false;
+        }
+        
+        return true;
+        
+    }
+    
+    
+    private boolean validarActualizarDatos(String email, String password, String nombre, String edad){
+           
         String regExpEmail = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$";
                       
         if(email.length() <= 1 || !email.matches(regExpEmail)){
@@ -81,7 +111,8 @@ public class ServicioUsuarios {
             int edadInt = Integer.parseInt(edad);
             Usuario usuario = new Usuario(nombre, email, edadInt, password);
             dao.crear(usuario);
-            return dao.leer(email);
+            Usuario user = dao.leer(email);
+            return user;
         }else{
             return null;
         }
@@ -111,20 +142,21 @@ public class ServicioUsuarios {
     
     public Usuario modificar(int id, String email, String password, String nombre, String edad) throws Exception{
         int edadInt = Integer.parseInt(edad);
-        Usuario user = new Usuario(nombre, email, edadInt, password);
+        Usuario user = new Usuario(nombre, email, edadInt, password, id);
         
-        return modificar(id, user);
+        return modificar(user);
     }
     
     
     
-    public Usuario modificar(int id, Usuario objConDatosNuevos) throws Exception {
+    public Usuario modificar(Usuario objConDatosNuevos) throws Exception {
         String email = objConDatosNuevos.getEmail();
         String password = objConDatosNuevos.getPassword();
         String nombre = objConDatosNuevos.getNombre();
         String edad = Integer.toString(objConDatosNuevos.getEdad());
+        int id = objConDatosNuevos.getId();
         
-        if(validarDatos(email, password, nombre, edad)){
+        if(validarActualizarDatos(email, password, nombre, edad)){
             dao.modificar(id, objConDatosNuevos);
             return dao.leer(email);
         }else{
