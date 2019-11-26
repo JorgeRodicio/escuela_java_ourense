@@ -112,6 +112,7 @@ public class TestUsuario {
     public void EliminarUsuarios() throws Exception {
          ServicioUsuarios ser = new ServicioUsuarios();
         //Eliminar usuarios creados
+         ser.eliminar(4);
          ser.eliminar(10);
          ser.eliminar(11);
          ser.eliminar(12);
@@ -121,6 +122,11 @@ public class TestUsuario {
          ser.eliminar(16);
          ser.eliminar(17);
          ser.eliminar(18);
+         ser.eliminar(19);
+         ser.eliminar(20);
+         ser.eliminar(21);
+         ser.eliminar(22);
+         ser.eliminar(23);
     }
     
 }
