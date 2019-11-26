@@ -19,6 +19,7 @@ import static org.junit.Assert.*;
 public class TestUsuario {
     
     public TestUsuario() {
+        
     }
 
     // TODO add test methods here.
@@ -122,8 +123,55 @@ public class TestUsuario {
 //    }
     
     
+  
+       @Test
+    public void CrearUsuarioValidos() throws Exception {
+         ServicioUsuarios ser = new ServicioUsuarios();
+         
+      //   Crear 5 usuarios
+         ser.crear("usuario1@user", "abc1234", "Mandaloriano", "34");
+         ser.crear("usuario2@user", "abc1234", "Manolito", "13");
+         ser.crear("usuario3@user", "abc123421342", "Pacojones", "78");
+         ser.crear("usuario4@user", "abc123342", "Nanonaino", "56");
+         ser.crear("usuario5@user", "abc123142", "Hasancito", "15");
+         
+         
+            //comprobar
+           assertEquals("Mandaloriano", ser.leer(126).getNombre());
+           ser.crear("user1@asdxzc", "1231231", "Prueba", "23");
+           ser.crear("user2@asdxzcz", "1231231", "Prueba", "23");
+           ser.crear("user3@asdxzcz", "1231231", "Prueba", "23");
+           assertEquals(3, ser.leerPorNombre("Prueba").size());
+           
+     
+
+//Modificar un usuario por id
+         
+         
+         
+    }
+       
     
-    
-    
+      @Test
+    public void EliminarUsuarios() throws Exception {
+         ServicioUsuarios ser = new ServicioUsuarios();
+        //Eliminar usuarios creados
+         ser.eliminar(4);
+         ser.eliminar(10);
+         ser.eliminar(11);
+         ser.eliminar(12);
+         ser.eliminar(13);
+         ser.eliminar(14);
+         ser.eliminar(15);
+         ser.eliminar(16);
+         ser.eliminar(17);
+         ser.eliminar(18);
+         ser.eliminar(19);
+         ser.eliminar(20);
+         ser.eliminar(21);
+         ser.eliminar(22);
+         ser.eliminar(23);
+    }
+
     
 }
