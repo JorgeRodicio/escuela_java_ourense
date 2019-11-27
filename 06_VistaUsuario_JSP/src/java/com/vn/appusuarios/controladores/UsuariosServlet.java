@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.vn.controladores;
+package com.vn.appusuarios.controladores;
 
 import com.appusuarios.modelo.ChivatoServicios;
 import com.appusuarios.modelo.ServicioUsuarios;
@@ -51,7 +51,9 @@ public class UsuariosServlet extends HttpServlet {
             Usuario usuario = srvUsu.crear(email, password, nombre, edad);
             
             if(usuario !=  null && usuario.getId() >= 0){
+                request.getSession().setAttribute("emailUsuario", email);
                 request.getRequestDispatcher("registrado.jsp").forward(request, response);
+          
             }else{
                 request.getRequestDispatcher("registrarse.jsp").forward(request, response);
             }
