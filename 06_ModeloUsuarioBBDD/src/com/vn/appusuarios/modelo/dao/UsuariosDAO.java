@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.appusuarios.modelo;
+package com.vn.appusuarios.modelo.dao;
 
+import com.vn.appusuarios.modelo.dao.IGenericDao;
+import com.vn.appusuarios.modelo.dao.ConexionDerbyDB;
+import com.vn.appusuarios.modelo.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

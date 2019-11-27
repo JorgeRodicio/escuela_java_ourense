@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.appusuarios.modelo;
+package com.vn.appusuarios.modelo.logica;
 
+import com.vn.appusuarios.modelo.Usuario;
+import com.vn.appusuarios.modelo.logica.ChivatoServicios;
+import com.vn.appusuarios.modelo.dao.UsuariosDAO;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
