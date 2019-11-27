@@ -21,11 +21,28 @@
             <artifactId>derbyclient</artifactId>
             <version>10.14.2.0</version>
         </dependency>
-        <dependency>
+        
+        <!--  <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derbynet</artifactId>
             <version>10.14.2.0</version>
+        </dependency> 
+        -->
+        <dependency>
+	        <groupId>mysql</groupId>
+	        <artifactId>mysql-connector-java</artifactId>
+	        <version>8.0.16</version>
         </dependency>
+        
+       	<dependency>
+    	<groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>4.12</version>
+		    <scope>test</scope>
+		</dependency>
+		
+		
+       	
         
 
     </dependencies>
