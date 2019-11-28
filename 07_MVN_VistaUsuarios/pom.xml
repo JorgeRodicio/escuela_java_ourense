@@ -8,6 +8,13 @@
   <name>07_MVN_VistaUsuarios Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+  
+  	<dependency>
+  		<groupId>com.vn.appusuarios.modelo</groupId>
+	    <artifactId>07_MVN_ModeloUsuario</artifactId>
+	    <version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
