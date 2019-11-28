@@ -1,0 +1,15 @@
+@Object00
+
+#Liostar contenedores levantados
+
+	sudo docker ps
+
+
+#El comando run ejecuta pero si no tiene el 
+contenedor descargado, lo obtiene
+# -d 	No muestra la salida por consola
+# -p 	Configuramos los puertos Salida:Interno
+# -e 	Establecer variables de entorno
+# Al final indicamos el contenedor:version
+
+	sudo docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1234 mysql:8.0.16
