@@ -1,5 +1,7 @@
 package com.vn.appusuarios.modelo;
 
+import java.io.Serializable;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,11 +9,11 @@ package com.vn.appusuarios.modelo;
  */
 
 
-/**
- *
+/** Ahora el usuario es un BEAN por implementar Serializable
+ * 
  * @author pc
  */
-public class Usuario {
+public class Usuario implements Serializable{
     
     private int id;
     private String email;
