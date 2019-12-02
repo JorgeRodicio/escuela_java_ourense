@@ -35,4 +35,6 @@ export class NuevaCuentaComponent implements OnInit {
     console.log(this.cuenta.toString());
   }
 
+  
+
 }

@@ -17,10 +17,34 @@ export class CuentasRestService {
     })
   }
 
+  alCambiar: any;
+
   constructor(private httpCli : HttpClient) { }
 
-  public add(nuevaCuenta : CuentaBanc) : Observable<CuentaBanc> {
-    return this.httpCli.post<CuentaBanc>(this.urlApiRest, nuevaCuenta, this.httpOptions);
+  public add(nuevaCuenta : CuentaBanc, lambda : any) : Observable<CuentaBanc> {
+    let observable : Observable<CuentaBanc> = this.httpCli.post<CuentaBanc>(this.urlApiRest, nuevaCuenta, this.httpOptions);
+    observable.subscribe((datos) =>{
+      this.alCambiar(datos);
+      lambda(datos);
+    });
+    return observable;
+  }
+
+  public traerTodos() : Observable<CuentaBanc[]> {
+    return this.httpCli.get<CuentaBanc[]>(this.urlApiRest);
+  }
+
+  public eliminarCuenta(id : number) : Observable<CuentaBanc>{
+    let observable : Observable<CuentaBanc> = this.httpCli.delete<CuentaBanc>(this.urlApiRest + "/" + id, this.httpOptions);
+    observable.subscribe(this.alCambiar);
+    return observable;
+  }
+
+  public modificarCuenta(id: number, nuevaCuenta : CuentaBanc) : Observable<CuentaBanc> {
+    let observable : Observable<CuentaBanc>;
+    observable = this.httpCli.put<CuentaBanc>(this.urlApiRest, nuevaCuenta, this.httpOptions);
+
+    return observable;
   }
 
 }
